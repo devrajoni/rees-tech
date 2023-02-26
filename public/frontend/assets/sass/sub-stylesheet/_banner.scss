@@ -1,0 +1,378 @@
+/*@@@@@@@@@@@@@@   03. Banner CSS   @@@@@@@@@@@@@@@@@*/
+
+.banner {
+	background-position: center;
+	height: 700px;
+	@extend %hidden;
+	@extend %relative;
+	@include breakpoint(lg) {
+		min-height: 800px;
+	}
+	@include breakpoint(xl) {
+		background-position: center right;
+	}
+	.banner-shape_1,
+	.banner-shape_2,
+	.banner-shape_3,
+	.banner-shape_4,
+	.banner-shape_5,
+	.banner-shape_6,
+	.banner-shape_7 {
+		@extend %absolute;
+		display: none;
+		@include breakpoint(lg) {
+			display: inherit;
+		}
+	}
+	.banner-shape_1 {
+		right: 0;
+		bottom: 0;
+		@include breakpoint(max-xxl) {
+			@include breakpoint(lg) {
+				right: -50%;
+			}
+			@include breakpoint(xl) {
+				right: -200px;
+			}
+		}
+	}
+	.banner-shape_2 {
+		right: 20%;
+		bottom: 0%;
+		@include breakpoint(max-xl) {
+			@include breakpoint(lg) {
+				right: 10%;
+			}
+		}
+	}
+	.banner-shape_3 {
+		right: 5%;
+		bottom: 0%;
+		@include breakpoint(max-xl) {
+			@include breakpoint(lg) {
+				right: -5%;
+			}
+		}
+	}
+	.banner-shape_4 {
+		left: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+	.banner-shape_5 {
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+	.banner-shape_6 {
+		left: 35%;
+		bottom: 70px;
+		z-index: 1;
+	}
+	.banner-shape_7 {
+		bottom: 175px;
+		animation: run_animation 40s linear infinite forwards;
+	}
+	// banner area style css start here
+	.banner-area {
+        @extend %absolute;
+       	@extend %p-center;
+		.banner-content {
+			.banner-heading {
+				h2 {
+					margin: 0;
+					font-weight: 300;
+					span {
+						font-weight: 700;
+					}
+					&:last-child {
+						margin-bottom: 20px;
+					}
+					@include breakpoint(lg) {
+						font-size: 65px;
+						line-height: 72px;
+					}
+				}
+			}
+			p {
+				margin-bottom: 40px;
+			}
+		}
+	}
+	&.style-2 {
+		// @include breakpoint(xxl) {
+		// 	margin: 0 90px;
+		// }
+		.banner-area {
+			.banner-content {
+				.banner-heading {
+					h2 {
+						@include breakpoint(lg) {
+							font-size: 60px;
+						}
+					}
+				}
+				p {
+					font-size: 18px;
+					line-height: 30px;
+					color: $title-color;
+					@include breakpoint(xl) {
+						max-width: 70%;
+						margin: auto;
+						margin-bottom: 40px;
+					}
+				}
+			}
+		}
+	}
+	&.style-3 {
+		.banner-area {
+			height: 100%;
+			.banner-slider {
+				height: 100%;
+				.swiper-slide {
+					@extend %relative;
+					-webkit-background-size: cover;
+					-moz-background-size: cover;
+					-o-background-size: cover;
+					background-size: cover;
+					&.b_slide_1 {
+						background: url(../../assets/images/banner/bg-image-4.jpg) no-repeat center center;
+					}
+					&.b_slide_2 {
+						background: url(../../assets/images/banner/bg-image-3.jpg) no-repeat center center;
+					}
+					&.b_slide_3 {
+						background: url(../../assets/images/banner/bg-image-5.jpg) no-repeat center center;
+					}
+				}
+				.slider-content {
+					@extend %absolute;
+					@extend %p-center;
+					.banner-content {
+						display: inline-block;
+						p {
+							max-width: 70%;
+						}
+						.custom-btn {
+							border-radius: 2px;
+						}
+					}
+				}
+				.banner-pagination {
+					@extend %absolute;
+					bottom: 30px;
+					text-align: center;
+					z-index: 99;
+					.swiper-pagination-bullet {
+						width: 16px;
+						height: 16px;
+						border: 2px solid $white-color;
+					}
+					.swiper-pagination-bullet-active {
+						background: $white-color;
+						border-color: #0000004a;
+					}
+				}
+			}
+		}
+	}
+}
+
+// box banner style css start here
+.box-banner {
+	position: relative;
+	@include breakpoint(xxl) {
+		padding: 0 90px;
+	}
+	&::before, &::after {
+		width: 100%;
+		z-index: -1;
+		left: 0;
+		@extend %absolute;
+	}
+	&::before {
+		bottom: 0;
+		height: 100%;
+		background: url(images/pattern.png);
+	}
+	&::after {
+		height: 400px;
+		top: 0;
+		background: #40b159;
+	}
+}
+
+
+
+
+// costom slider section
+
+// .pic-wrapper {
+// 	position: absolute;
+// 	width: 100%;
+// 	height: 100%;
+// 	overflow: hidden;
+// }
+  
+// figure {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	opacity: 0;
+// 	/*animation*/
+// 	animation: slideShow 24s linear infinite 0s;
+// 	-o-animation: slideShow 24s linear infinite 0s;
+// 	-moz-animation: slideShow 24s linear infinite 0s;
+// 	-webkit-animation: slideShow 24s linear infinite 0s;
+// }
+  
+// figurecaption {
+// 	position: absolute;
+// 	top: 50%;
+// 	left: 50%;
+// 	color: #fff;
+// }
+  
+.b_slide_1 {
+	// opacity: 1;
+	background: url(../../assets/images/banner/bg-image-4.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+  
+.b_slide_2 {
+	// opacity: 1;
+	background: url(../../assets/images/banner/bg-image-5.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+  
+  
+// .pic-2 {
+// 	animation-delay: 6s;
+// 	-o-animation-delay: 6s;
+// 	-moz--animation-delay: 6s;
+// 	-webkit-animation-delay: 6s;
+// 	background: url(../../assets/images/banner/bg-image-5.jpg) no-repeat center center;
+// 	-webkit-background-size: cover;
+// 	-moz-background-size: cover;
+// 	-o-background-size: cover;
+// 	background-size: cover;
+// }
+  
+// .pic-3 {
+// 	animation-delay: 12s;
+// 	-o-animation-delay: 12s;
+// 	-moz--animation-delay: 12s;
+// 	-webkit-animation-delay: 12s;
+// 	background: url(../../assets/images/banner/bg-image-4.jpg) no-repeat center center;
+// 	-webkit-background-size: cover;
+// 	-moz-background-size: cover;
+// 	-o-background-size: cover;
+// 	background-size: cover;
+// }
+  
+// .pic-4 {
+// 	animation-delay: 18s;
+// 	-o-animation-delay: 18s;
+// 	-moz--animation-delay: 18s;
+// 	-webkit-animation-delay: 18s;
+// 	background: url(../../assets/images/banner/bg-image-5.jpg) no-repeat center center;
+// 	-webkit-background-size: cover;
+// 	-moz-background-size: cover;
+// 	-o-background-size: cover;
+// 	background-size: cover;
+// }
+
+// /* keyframes*/
+  
+// @keyframes slideShow {  
+// 	0% {
+//    		opacity: 0;
+//    		transform:scale(1);
+//    		-ms-transform:scale(1);
+//   	}
+//    	5% {
+//    		opacity: 1
+//   	}
+//   	25% {
+//    		opacity: 1;
+//   	}
+//    	30% {
+//    		opacity: 0;
+//    		transform:scale(1.1);
+//    		-ms-transform:scale(1.1);
+//   	}
+//    	100% {
+//    		opacity: 0;
+//    		transform:scale(1);
+//    		-ms-transformm:scale(1);
+//   	}
+// }
+// @-o-keyframes slideShow {  
+// 		0% {
+//    		opacity: 0;
+//    		-o-transform:scale(1);
+//   	}
+//    	5% {
+//    		opacity: 1
+//   	}
+//    	25% {
+//    		opacity: 1;
+//   	}
+//    	30% {
+//    		opacity: 0;
+//    		-o-transform:scale(1.1);
+//   	}
+//    	100% {
+//    		opacity: 0;
+//    		-o-transformm:scale(1);
+//   	}
+// }
+// @-moz-keyframes slideShow {  
+// 	0% {
+//    		opacity: 0;
+//    		-moz-transform:scale(1);
+//   	}
+//    	5% {
+//    		opacity: 1
+//   	}
+//    	25% {
+//    		opacity: 1;
+//   	}
+//    	30% {
+//    		opacity: 0;
+//    		-moz-transform:scale(1.1);
+//   	}
+//    	100% {
+// 		opacity: 0;
+// 		-moz-transformm:scale(1);
+//   	}
+// }
+// @-webkit-keyframes slideShow {  
+// 	0% {
+// 		opacity: 0;
+// 		-webkit-transform:scale(1);
+//   	}
+//    	5% {
+//    		opacity: 1
+//   	}
+//    	25% {
+//    		opacity: 1;
+//   	}
+//    	30% {
+// 		opacity: 0;
+// 		-webkit-transform:scale(1.1);
+//   	}
+//    	100% {
+// 		opacity: 0;
+// 		-webkit-transformm:scale(1);
+//   	}
+// }

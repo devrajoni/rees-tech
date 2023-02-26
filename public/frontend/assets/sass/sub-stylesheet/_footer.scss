@@ -1,0 +1,246 @@
+/*@@@@@@@@@@@@@@   16. Footer   @@@@@@@@@@@@@@@@@*/
+
+.footer-section {
+    @extend %hidden;
+    .footer-top {
+        padding-bottom: 150px;
+        @extend %relative;
+        &:after {
+            height: 150px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-position: center;
+            background-size: cover;
+            background: url(images/footer-shape.png) no-repeat bottom left;
+            @extend %absolute;
+        }
+        .top {
+            z-index: 1;
+            justify-content: center;
+            margin-bottom: 90px;
+            @extend %relative;
+            @extend %flex;
+            .post-item  {
+                align-items: center;
+                background: #57cbe1;
+                width: 100%;
+                padding: 30px ;
+                font-family: $frank;
+                @extend %flex;
+                @include breakpoint(lg) {
+                    width: calc(100% / 2);
+                }
+                @include breakpoint(xl) {
+                    width: calc(100% / 3);
+                }
+                .post-thumb {
+                    width: 55px;
+                }
+                .post-content {
+                    padding-left: 20px;
+                    width: calc(100% - 55px);
+                    p {
+                        margin: 0;
+                        font-size: 20px;
+                        font-weight: 700;
+                        @media screen and (max-width: 400px) {
+                            font-size: 16px;
+                        }
+                    }
+                    h6, p {
+                        color: $white-color ;
+                    }
+                }
+                &:nth-child(2) {
+                    background: #62e0c1;
+                }
+                &:nth-child(3) {
+                    background: #7fe092;
+                }
+            }
+        } 
+        .bottom {
+            z-index: 1;
+            @extend %relative;
+            .bottom-item {
+                @include breakpoint(max-lg) {
+                    margin-bottom: 30px;
+                }
+                h4 {
+                    margin-bottom: 30px;
+                    @extend %relative;
+                    &:before,
+                    &:after {
+                        height: 1px;
+                        left: 0;
+                        @extend %absolute;
+                    }
+                    &:before {
+                        width: 150px;
+                        background: #62e0c1;
+                        top: calc(100% + 18px);
+                    }
+                    &:after {
+                        width: 70px;
+                        background: #7fe092 ;
+                        top: calc(100% + 22px);
+                    }
+                }
+            }
+            .footer-logo {
+                margin-bottom: 30px;
+            }
+            p {
+                margin-bottom: 27px;
+            }
+            ul {
+                @extend %flex;
+                li {
+                    &.post-item {
+                        width: 100%;
+                        border-bottom: 1px solid $border-color;
+                        padding: 21px 0 25px;
+                        @extend %flex;
+                        &:last-child {
+                            border-bottom: none;
+                        }
+                        &:hover {
+                            .post-thumb {
+                                a{
+                                    img {
+                                        transform: scale(1.07);
+                                    }
+                                }
+                            }
+                            .post-content {
+                                h6 {
+                                    a {
+                                        color: $hover-color;
+                                    }
+                                }
+                            }
+                        }
+                        .post-thumb {
+                            width: 100px;
+                            @extend %hidden;
+                            a {
+                                display: block;
+                                img {
+                                    display: block;
+                                    @include transition($transition);
+                                }
+                            }
+                        }
+                        .post-content {
+                            width: calc(100% - 100px);
+                            padding-left: 15px;
+                            @include breakpoint(sm) {
+                                padding-left: 25px;
+                            }
+                            h6 {
+                                margin-bottom: 0;
+                                line-height: 20px;
+                            }
+                            p {
+                                margin:0;
+                            }
+                        }
+                    }
+                }
+                &.footer-gallery {
+                    margin: -7.5px !important;
+                    padding-top: 21px;
+                    justify-content: flex-end;
+                    li {
+                        width: 33.33%;
+                        padding: 7.5px;
+                        &:hover {
+                            .post-thumb {
+                                a {
+                                    img {
+                                        transform: scale(1.07);
+                                    }
+                                }
+                            }
+                        }
+                        .post-thumb {
+                            @extend %hidden;
+                            @extend %link-image;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer-bottom {
+        background: $white-color;
+        .section-wrapper {
+            justify-content: center;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            font-family: $frank;
+            padding: 20px 0;
+            @extend %flex;
+            .left , .right {
+                width : 100%;
+            }
+            .left {
+                span {
+                    display: block;
+                    text-align: center;
+                    a {
+                        color: $hover-color;
+                        font-weight: 700;
+                    }
+                }
+                @include breakpoint(xl) {
+                    width: 33.33%;
+                    text-align: left;
+                }
+            }
+            .right {
+                @extend %flex;
+                justify-content: center;
+                @include breakpoint(xl) {
+                    width: 66.66%;
+                }
+                li {
+                    padding: 10px 15px;
+                    align-items: center;
+                    @extend %flex;
+                    @extend %relative;
+                    &:after {  
+                        right: 0;
+                        top: 50%; 
+                        width: 1px;
+                        height: 40px ;
+                        background: $border-color;
+                        @extend %absolute;
+                        @include transform(translateY(-50%) rotate(30deg));
+                    }
+                    &:last-child {
+                        &:after {
+                            display: none;
+                        }
+                    }
+                    a {
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                        line-height: 40px;
+                        margin-right: 12px;
+                        color: $white-color;
+                        @include border-radius(50%);
+                        @include transition($transition);
+                        &:hover {
+                            color: $theme-color;
+                            @extend %shadow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

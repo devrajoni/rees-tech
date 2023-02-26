@@ -1,0 +1,439 @@
+/*@@@@@@@@@@@@@@   02. Header   @@@@@@@@@@@@@@@@@*/
+
+.header-section {
+    z-index: 999;
+    background: $white-color;
+    @extend %relative;
+    @include transition($transition);
+    &.menu-fixed {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        @extend %shadow;
+        .header-area .main-menu .top {
+            display: none;
+        }
+    }
+    .header-container {
+        @include breakpoint(xxl) {
+            max-width: 1740px;
+            margin: auto;
+        }
+    }
+    .header-area {
+        align-items: center;
+        justify-content: space-around;
+        @extend %flex;
+        .logo {
+            @include breakpoint(lg) {
+                width: 230px;
+                a {
+                    display: block;
+                    img {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+        .main-menu {
+            @include breakpoint(xl) {
+                min-width: 850px;
+            }
+            ul {
+                &.menu {
+                    justify-content: space-between;
+                    align-items: center;
+                    @extend %flex;
+                    li {
+                        padding: 18px 0;
+                        @extend %relative;
+                        a {
+                            color: $title-color;
+                            font-weight: 500;
+                            padding: 5px;
+                            padding-right: 15px;
+                            &.active {
+                                color: $hover-color;
+                            }
+                        }
+                        &:hover {
+                            >.dd-icon-down {
+                                &::before {
+                                    @include transform(translateX(-15px)translateY(-50%)rotate(90deg));
+                                }
+                            }
+                        }
+                        ul {
+                            opacity: 0;
+                            visibility: hidden;
+                            transform-origin: top;
+                            min-width: 250px;
+                            background: $white-color;
+                            z-index: 999;
+                            top: 100%;
+                            left: 0;
+                            @extend %shadow;
+                            @extend %absolute;
+                            @include transform(scaleY(0));
+                            @include transition($transition);
+                            li {
+                                padding: 0 20px;
+                                border-bottom: 1px solid $border-color;
+                                a {
+                                    padding: 10px;
+                                    display: block;
+                                }
+                            }
+                        }
+                        &:hover >ul {
+                            opacity: 1;
+                            visibility: visible;
+                            @include transform(scaleY(1));
+                            >li {
+                                &:hover {
+                                    >a {
+                                        padding-left: 15px ;
+                                    }
+                                }
+                                ul {
+                                    top: 0;
+                                    left: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .right-side {
+            justify-content: space-between;
+            @extend %flex;
+            @include breakpoint(xxl) { width: 317px; }
+            >li {
+                align-items: center;
+                @extend %relative;
+                @extend %flex;
+                .post-content {
+                    padding-left: 10px ;
+                    margin-right: 20px;
+                    span {
+                        display: block;
+                        &:last-child {
+                            color: $hover-color;
+                            line-height: 24px;
+                        }
+                    }
+                }
+                >a {
+                    text-align: center;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-left: 1px solid $border-color;
+                    @extend %pointer;
+                    @extend %relative;
+                    span {
+                        top: 5px;
+                        right: 5px;
+                        font-size: 8px ;
+                        background: $hover-color;
+                        width : 16px;
+                        height: 16px;
+                        line-height: 16px;
+                        color: $white-color;
+                        @extend %absolute ;
+                        @include border-radius(50%);
+                    }
+                }
+                &:first-child {
+                    @include breakpoint(max-xxl) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .top {
+        justify-content: space-between;
+        border-bottom: 1px solid $border-color;
+        @extend %flex;
+        ul {
+            justify-content: space-between;
+            @extend %flex;
+            li {
+                border-left: 1px solid $border-color;
+                line-height: 49px;
+                padding: 0;
+                font-weight: 400;
+            }
+            &.left {
+                li {
+                    padding: 0 15px;
+                }
+            }
+            &.right {
+                li {
+                    a {
+                        width : 50px;
+                        height : 49px;
+                        text-align: center;
+                        color: $hover-color;
+                        &:hover {
+                            color: $white-color;
+                            background-color: $hover-color;
+                        }
+                    }
+                    &:last-child {
+                        border-right: 1px solid $border-color;
+                    }
+                }
+            }
+        }
+    }
+
+    // header section style 2 css start here
+    &.style-2 {
+        &.menu-fixed {
+            left: 0;
+            @include breakpoint(xxl) {
+                padding: 0 40px;
+            }
+            .header-top {
+                display: none;
+            }
+        }
+        .header-top {
+            background: #40b159;
+            @include breakpoint(max-xxl) {
+                @include breakpoint(xl) {
+                    padding: 0 50px;
+                }
+            }
+            .top {
+                border-bottom: none;
+                ul {
+                    li {
+                        color: $white-color;
+                        border: none;
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                    &.right {
+                        li {
+                            border-left: 1px solid $white-color;
+                            a {
+                                color: $white-color;
+                                &:hover {
+                                    background: $white-color;
+                                    color: $hover-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .header-area {
+            @include breakpoint(xl) {
+                @include breakpoint(max-xxl) {
+                    padding: 0 50px;
+                    justify-content: space-between;
+                }
+            }
+            .main-menu {
+                .menu {
+                    >li {
+                        padding: 31px 0;
+                    }
+                }
+            }
+            .custom-btn {
+                font-style: italic;
+                padding: 15px 24px;
+                font-family: $roboto;
+                i {
+                    margin-right: 5px;
+                    transform: rotate(-45deg);
+                }
+                @include breakpoint(max-xxl) {
+                    display: none;
+                }
+            }
+        }
+        .right-side {
+            width: 100px;
+            >li {
+                >a {
+                    border: 1px solid $border-color;
+                    border-radius: 100%;
+                }
+                &:first-child {
+                    @include breakpoint(max-xxl) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .boxed  .header-section.style-2 .header-top, .boxed .header-section.style-2 .header-area {
+        padding: 0;
+    }
+}
+.boxed .header-section.style-2.menu-fixed {
+    left: auto;
+}
+.boxed .header-section.style-2 .header-area {
+    padding: 0 15px;
+}
+
+// header box style css start here
+.box-header {
+    background: #40b159;
+    @include breakpoint(xxl) {
+		padding: 0 90px;
+	}
+}
+
+// search area start here
+.search-area {
+    &.open {
+        .search-input {
+            transform: scaleX(1);
+        }
+    }
+    .search-input {
+        margin: auto;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $white-color;
+        z-index: 1111111;
+        text-align: center;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: scaleX(0);
+        @include transition($transition);
+        .search-close {
+            width: 50px;
+            height: 50px;
+            top: 50px;
+            right: 50px;
+            @extend %pointer;
+            @extend %absolute;
+            &:hover {
+                span {
+                    background: $hover-color;
+                }
+            }
+            span {
+                width: 50px;
+                height: 1px;
+                background: $title-color;
+                top: 25px;
+                right: 0px;
+                @extend %absolute;
+                @include transition($transition);
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2) {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+        form {
+            top: 50%;
+            left: 50%;
+            width: 75%;
+            transform: translate(-50%,-50%);
+            @extend %absolute;
+            input {
+                width: 100%;
+                color: $desc-color;
+                border-radius: 0;
+                text-align: center;
+                font-size: $fs-h2;
+                border: none;
+                border-bottom: 1px solid $border-color;
+                &:hover, &:focus {
+                    border-color: $hover-color;
+                }
+            }
+        }
+    }
+}
+
+/*@@@@@@@@@@@@@@   04. Page Header   @@@@@@@@@@@@@@@@@*/
+
+.page-header {
+    min-height: 500px;
+    background: url(../../assets/images/page-header/bg-image.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 67px;
+    padding: 0;
+    @extend %relative;
+    @include breakpoint(xl) {
+        margin-top: 0;
+    }
+    .page-header-area {
+        @extend %absolute;
+        @extend %p-center;
+        .page-header-content {
+            text-align: center;
+            .page-header-title {
+                margin-bottom: 45px;
+                @extend %relative;
+                &:after {
+                    width: 160px;
+                    height: 15px;
+                    left: 50%; 
+                    top: calc(100% + 15px);
+                    background: url(images/01.png) no-repeat bottom left;
+                    transform: translateX(-50%);
+                    @extend %absolute;
+                }
+                h2 {
+                    margin: 0;
+                    line-height: 48px;
+                    span {
+                        font-weight: 400;
+                    }
+                }
+            }
+            .breadcamp {
+                @extend %flex;
+                justify-content: center;
+                li {
+                    @extend %relative;
+                    font-family: $frank;
+                    padding-right: 20px;
+                    a {
+                        color: $title-color;
+                        &:after {
+                            width: 5px;
+                            height: 1px;
+                            top: 52%;
+                            right: 6px;
+                            background: $title-color;
+                            @extend %absolute;
+                            @include transition($transition);
+                        }
+                        &.active {
+                            &:after { display: none; }
+                        }
+                        i {
+                            color: $title-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
